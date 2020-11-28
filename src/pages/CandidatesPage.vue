@@ -15,7 +15,7 @@ export default {
   },
 
   created () {
-    this.$MUser.$candidates({
+    this.$MUser.$getCandidates({
       with: ['online_events']
     })
 
