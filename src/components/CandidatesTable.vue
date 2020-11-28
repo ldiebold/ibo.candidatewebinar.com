@@ -6,7 +6,9 @@
     :columns="columns"
   >
     <template #top>
-      <div class="text-h6">Candidates</div>
+      <div class="text-h6">
+        Candidates
+      </div>
 
       <q-space />
 

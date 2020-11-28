@@ -56,7 +56,7 @@
       hint="Please double check the time is right!"
     />
 
-    <br />
+    <br>
 
     <q-btn
       label="Create"
