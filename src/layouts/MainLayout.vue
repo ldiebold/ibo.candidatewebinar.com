@@ -12,7 +12,7 @@
             flat
             dense
             round
-            icon="menu"
+            icon="mdi-menu"
             aria-label="Menu"
             @click="leftDrawerOpen = !leftDrawerOpen"
           />
@@ -23,7 +23,7 @@
 
           <q-btn
             flat
-            icon="logout"
+            icon="mdi-logout"
             round
             @click="handleLogout"
           />

@@ -2,9 +2,16 @@
   <BDialogButton
     v-bind="$attrs"
     v-on="$listeners"
+    ref="dialogButton"
   >
     <q-card-section>
-      <AttachOnlineEventToUserForm :user="user" />
+      <AttachOnlineEventToUserForm
+        @success="response => {
+          $emit('success', response)
+          $refs.dialogButton.hide()
+        }"
+        :user="user"
+      />
     </q-card-section>
   </BDialogButton>
 </template>

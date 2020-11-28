@@ -46,6 +46,9 @@ export default {
         user_id: this.user.id,
         online_event_id: this.online_event_id
       })
+        .then(response => {
+          this.$emit('success', response)
+        })
     }
   },
 

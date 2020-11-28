@@ -1,18 +1,26 @@
 <template>
-  <q-page padding>
-    <OnlineEventsTable :online-events="online_events" />
+  <q-page>
+    <!-- <OnlineEventsTable
+      style="height: calc(100vh - 50px)"
+      :online-events="online_events"
+    /> -->
+
+    <OnlineEventsTableDynamic
+      style="height: calc(100vh - 50px)"
+      :online-events="online_events"
+    />
   </q-page>
 </template>
 
 <script>
 import OnlineEvent from '../models/OnlineEvent'
-import OnlineEventsTable from 'components/OnlineEventsTable.vue'
+import OnlineEventsTableDynamic from 'components/OnlineEventsTableDynamic.vue'
 
 export default {
   name: 'EventsPage',
 
   components: {
-    OnlineEventsTable
+    OnlineEventsTableDynamic
   },
 
   created () {

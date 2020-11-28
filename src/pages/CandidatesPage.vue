@@ -1,17 +1,17 @@
 <template>
-  <q-page padding>
-    <CandidatesTable :users="users" />
+  <q-page>
+    <CandidatesTableDynamic :models="users" />
   </q-page>
 </template>
 
 <script>
-import CandidatesTable from 'components/CandidatesTable.vue'
+import CandidatesTableDynamic from 'components/CandidatesTableDynamic.vue'
 
 export default {
   name: 'UsersPage',
 
   components: {
-    CandidatesTable
+    CandidatesTableDynamic
   },
 
   created () {
