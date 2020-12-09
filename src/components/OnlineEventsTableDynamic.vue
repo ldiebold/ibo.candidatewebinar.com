@@ -8,6 +8,9 @@
     :model-class="$MOnlineEvent"
     role="ibo"
     :merge-fields="merrgeFields"
+    :search="{
+      fields: ['title', 'description']
+    }"
   />
 </template>
 

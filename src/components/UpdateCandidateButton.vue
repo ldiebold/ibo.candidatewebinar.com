@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { BDialogButton } from '@ldiebold/quasar-ui-process-base-components/src'
+import { BDialogButton } from '@agripath/quasar-ui-base-components/src'
 import UpdateCandidateForm from 'components/UpdateCandidateForm.vue'
 
 export default {

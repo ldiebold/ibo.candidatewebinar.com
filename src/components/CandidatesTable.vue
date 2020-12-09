@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import { MDeleteButton } from '@ldiebold/quasar-ui-process-base-components/src'
+import { MDeleteButton } from '@agripath/quasar-ui-base-components/src'
 import CreateCandidateButton from 'components/CreateCandidateButton.vue'
 import UpdateCandidateButton from 'components/UpdateCandidateButton.vue'
 import AttachOnlineEventToUserButton from 'components/AttachOnlineEventToUserButton.vue'

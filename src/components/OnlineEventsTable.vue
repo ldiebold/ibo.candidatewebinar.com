@@ -5,6 +5,11 @@
     :data="onlineEvents"
     :columns="columns"
     :pagination="initialPagination"
+    :search="{
+      fields: [
+        'title'
+      ]
+    }"
   >
     <template #top>
       <div class="text-h5">

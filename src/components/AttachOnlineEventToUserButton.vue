@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { BDialogButton } from '@ldiebold/quasar-ui-process-base-components/src'
+import { BDialogButton } from '@agripath/quasar-ui-base-components/src'
 import AttachOnlineEventToUserForm from 'components/AttachOnlineEventToUserForm.vue'
 
 export default {

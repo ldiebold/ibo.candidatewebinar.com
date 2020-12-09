@@ -35,7 +35,7 @@
       class="q-mb-md"
     />
 
-    <br />
+    <br>
 
     <q-btn
       label="Update"
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { BDateTime } from '@ldiebold/quasar-ui-process-base-components/src'
+import { BDateTime } from '@agripath/quasar-ui-base-components/src'
 import { OnlineEvent } from '@ldiebold/process-orm-classes'
 
 export default {

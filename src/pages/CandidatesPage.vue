@@ -1,17 +1,17 @@
 <template>
   <q-page>
-    <CandidatesTableDynamic :models="users" />
+    <MCandidatesTable :entities="users" />
   </q-page>
 </template>
 
 <script>
-import CandidatesTableDynamic from 'components/CandidatesTableDynamic.vue'
+import { MCandidatesTable } from '@ldiebold/quasar-ui-process-model-components/src'
 
 export default {
-  name: 'UsersPage',
+  name: 'CandidatesPage',
 
   components: {
-    CandidatesTableDynamic
+    MCandidatesTable
   },
 
   created () {

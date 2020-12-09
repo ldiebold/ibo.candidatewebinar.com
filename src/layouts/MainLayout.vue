@@ -21,6 +21,14 @@
             IBO
           </q-toolbar-title>
 
+          <MSelectAppButton
+            icon="mdi-apps"
+            dense
+            flat
+            current-app-name="ibo"
+            :user="user"
+          />
+
           <q-btn
             flat
             icon="mdi-logout"
@@ -70,10 +78,11 @@
 </template>
 
 <script>
+import { MSelectAppButton } from '@ldiebold/quasar-ui-process-model-components/src'
 
 export default {
   name: 'MainLayout',
-  components: {},
+  components: { MSelectAppButton },
   methods: {
     handleLogout () {
       this.visible = false
@@ -91,6 +100,12 @@ export default {
     setTimeout(() => {
       this.visible = true
     }, 400)
+  },
+
+  computed: {
+    user () {
+      return this.$MUser.getSessionUser()
+    }
   },
 
   data () {
