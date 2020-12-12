@@ -126,6 +126,12 @@ export default {
           label: 'Events',
           description: 'create and edit events',
           to: '/events'
+        },
+        {
+          icon: 'mdi-chart-tree',
+          label: 'Structure',
+          description: 'Your businesses structure',
+          to: '/structure'
         }
       ]
     }
