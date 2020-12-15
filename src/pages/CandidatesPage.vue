@@ -1,6 +1,13 @@
 <template>
   <q-page>
-    <MCandidatesTable :entities="users" />
+    <MCandidatesTable :entities="users">
+      <template #top-right>
+        <MShowTutorialVideoButton
+          class="q-mr-sm"
+          title="Manage Candidates"
+        />
+      </template>
+    </MCandidatesTable>
   </q-page>
 </template>
 

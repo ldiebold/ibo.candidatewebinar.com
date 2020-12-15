@@ -11,7 +11,17 @@
     :search="{
       fields: ['title', 'description']
     }"
-  />
+  >
+    <template
+      v-for="(_, slot) of $scopedSlots"
+      v-slot:[slot]="scope"
+    >
+      <slot
+        :name="slot"
+        v-bind="scope"
+      />
+    </template>
+  </RManageModelTable>
 </template>
 
 <script>

@@ -4,6 +4,16 @@
       class="full-width"
       style="height: calc(100vh - 57px);"
     />
+
+    <q-page-sticky
+      position="top-right"
+      :offset="[18, 18]"
+    >
+      <MShowTutorialVideoButton
+        class="q-mr-sm"
+        title="Structure"
+      />
+    </q-page-sticky>
   </q-page>
 </template>
 

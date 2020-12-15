@@ -8,7 +8,14 @@
       hide-update-button
       disable-header-menu
       :visible-columns="['title', 'description', 'start_time', 'end_time']"
-    />
+    >
+      <template #top-right>
+        <MShowTutorialVideoButton
+          class="q-mr-sm"
+          title="Online Events"
+        />
+      </template>
+    </OnlineEventsTableDynamic>
   </q-page>
 </template>
 

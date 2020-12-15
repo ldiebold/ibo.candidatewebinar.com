@@ -97,6 +97,8 @@ export default {
   },
 
   mounted () {
+    this.$MTutorialVideo.$get()
+
     setTimeout(() => {
       this.visible = true
     }, 400)
