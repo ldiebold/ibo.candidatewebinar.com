@@ -70,6 +70,13 @@
         </q-list>
       </q-drawer>
 
+      <MTutorialVideoDialog
+        v-if="introductionVideo"
+        :video="introductionVideo"
+        v-model="showIntroductionVideoDialog"
+        @hide="handleIntroductionVideoHide"
+      />
+
       <q-page-container>
         <router-view />
       </q-page-container>
@@ -78,12 +85,19 @@
 </template>
 
 <script>
-import { MSelectAppButton } from '@ldiebold/quasar-ui-process-model-components/src'
+import { MSelectAppButton, MTutorialVideoDialog } from '@ldiebold/quasar-ui-process-model-components/src'
 
 export default {
   name: 'MainLayout',
-  components: { MSelectAppButton },
+  components: { MSelectAppButton, MTutorialVideoDialog },
   methods: {
+    handleIntroductionVideoHide () {
+      console.log('hide')
+      this.user.$update({
+        seen_introduction_video: 1
+      })
+    },
+
     handleLogout () {
       this.visible = false
       const vm = this
@@ -99,6 +113,10 @@ export default {
   mounted () {
     this.$MTutorialVideo.$get()
 
+    if (!this.user.seen_introduction_video) {
+      this.showIntroductionVideoDialog = true
+    }
+
     setTimeout(() => {
       this.visible = true
     }, 400)
@@ -107,12 +125,20 @@ export default {
   computed: {
     user () {
       return this.$MUser.getSessionUser()
+    },
+
+    introductionVideo () {
+      return this.$MTutorialVideo.query()
+        .where('title', 'IBO Introduction')
+        .first()
     }
   },
 
   data () {
     return {
       leftDrawerOpen: false,
+
+      showIntroductionVideoDialog: false,
 
       visible: false,
 
