@@ -18,7 +18,15 @@
       <SanctumLoginPage
         v-if="visible"
         @success="handleSuccess"
-      />
+      >
+        <template #below>
+          <MResetPasswordButton
+            flat
+            label="reset-password"
+            class="q-mt-md text-grey-7"
+          />
+        </template>
+      </SanctumLoginPage>
     </div>
   </transition>
 </template>

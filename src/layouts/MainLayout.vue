@@ -27,13 +27,13 @@
             flat
             current-app-name="ibo"
             :user="user"
+            class="q-mr-sm"
           />
 
-          <q-btn
+          <MAccountButton
             flat
-            icon="mdi-logout"
+            class="shadow-1"
             round
-            @click="handleLogout"
           />
         </q-toolbar>
       </q-header>
@@ -53,7 +53,7 @@
           </q-item-label>
 
           <q-item
-            v-for="item in menuItems"
+            v-for="item in availableMenuItems"
             :key="item.label"
             clickable
             :to="item.to"
@@ -65,6 +65,18 @@
               <q-item-label caption>
                 {{ item.description }}
               </q-item-label>
+            </q-item-section>
+            <q-item-section
+              v-if="item.dot"
+              side
+            >
+              <q-icon
+                :color="item.dot.color"
+                name="mdi-circle"
+              />
+              <q-tooltip v-if="item.dot.tooltip">
+                {{ item.dot.tooltip }}
+              </q-tooltip>
             </q-item-section>
           </q-item>
         </q-list>
@@ -79,20 +91,27 @@
 
       <q-page-container>
         <router-view />
+
+        <q-page-sticky
+          :offset="[8, 68]"
+          position="bottom-right"
+        >
+          <MUserFeedbackButton
+            icon="mdi-message-outline"
+            round
+          />
+        </q-page-sticky>
       </q-page-container>
     </q-layout>
   </transition>
 </template>
 
 <script>
-import { MSelectAppButton, MTutorialVideoDialog } from '@ldiebold/quasar-ui-process-model-components/src'
 
 export default {
   name: 'MainLayout',
-  components: { MSelectAppButton, MTutorialVideoDialog },
   methods: {
     handleIntroductionVideoHide () {
-      console.log('hide')
       this.user.$update({
         seen_introduction_video: 1
       })
@@ -131,6 +150,12 @@ export default {
       return this.$MTutorialVideo.query()
         .where('title', 'IBO Introduction')
         .first()
+    },
+
+    availableMenuItems () {
+      return this.menuItems.filter(menuItem => {
+        return menuItem.roles.includes(this.user.role)
+      })
     }
   },
 
@@ -147,19 +172,42 @@ export default {
           icon: 'person',
           label: 'Candidates',
           description: 'manage candidate accounts',
-          to: '/candidates'
+          to: '/candidates',
+          roles: ['ibo', 'admin', 'super admin']
         },
         {
           icon: 'calendar',
           label: 'Events',
-          description: 'create and edit events',
-          to: '/events'
+          description: 'Online Events',
+          to: '/events',
+          roles: ['ibo', 'admin', 'super admin']
         },
         {
           icon: 'mdi-chart-tree',
           label: 'Structure',
           description: 'Your businesses structure',
-          to: '/structure'
+          to: '/structure',
+          roles: ['ibo', 'admin', 'super admin']
+        },
+        {
+          label: 'Tutorial Videos',
+          description: 'Teach IBOs the site',
+          to: '/tutorial-videos',
+          roles: ['super admin'],
+          dot: {
+            color: 'secondary',
+            tooltip: 'Only super admins can see this page'
+          }
+        },
+        {
+          label: 'Users',
+          description: 'Manage All Users',
+          to: '/users',
+          roles: ['admin', 'super admin'],
+          dot: {
+            color: 'secondary',
+            tooltip: 'Only super admins, and admins can see this page'
+          }
         }
       ]
     }

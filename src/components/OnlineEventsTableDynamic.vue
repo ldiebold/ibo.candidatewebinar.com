@@ -7,7 +7,7 @@
     :pagination="initialPagination"
     :model-class="$MOnlineEvent"
     role="ibo"
-    :merge-fields="merrgeFields"
+    :merge-fields="mergeFields"
     :search="{
       fields: ['title', 'description']
     }"
@@ -83,7 +83,7 @@ export default {
   data () {
     const vm = this
     return {
-      merrgeFields: {
+      mergeFields: {
         end_time: {
           format (onlineEvent) {
             return vm.$dayjs(onlineEvent.start_time).format('DD/MM/YYYY h:mmA')

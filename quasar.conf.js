@@ -5,6 +5,7 @@
 require('dotenv').config()
 const env = process.env
 const fs = require('fs')
+const VueAutomaticImportPlugin = require('vue-automatic-import-loader/lib/plugin')
 
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
@@ -23,9 +24,11 @@ module.exports = function (/* ctx */) {
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
       'registerModelAliases',
+      'mapFormComponentTypes',
       'axios',
       'dayjs',
-      'RegisterGlobalComponents'
+      'RegisterGlobalComponents',
+      'VueDragDropBoot'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -74,7 +77,35 @@ module.exports = function (/* ctx */) {
           loader: 'eslint-loader',
           exclude: /node_modules/
         })
+
+        cfg.plugins.push(
+          new VueAutomaticImportPlugin({
+            match (originalTag, { kebabTag, camelTag }) {
+              if (kebabTag.startsWith('m-')) {
+                return [
+                  camelTag,
+                  `import ${camelTag} from '@ldiebold/quasar-ui-process-model-components/src/components/${camelTag}.vue'`
+                ]
+              }
+
+              if (kebabTag.startsWith('b-')) {
+                return [
+                  camelTag,
+                  `import { ${camelTag} } from '@agripath/quasar-ui-base-components/src'`
+                ]
+              }
+
+              if (kebabTag.startsWith('r-')) {
+                return [
+                  camelTag,
+                  `import { ${camelTag} } from '@agripath/quasar-ui-rest-components/src'`
+                ]
+              }
+            }
+          })
+        )
       }
+
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
@@ -107,7 +138,7 @@ module.exports = function (/* ctx */) {
       directives: ['ClosePopup'],
 
       // Quasar plugins
-      plugins: ['Dialog']
+      plugins: ['Dialog', 'Cookies', 'Notify']
     },
 
     // animations: 'all', // --- includes all animations
