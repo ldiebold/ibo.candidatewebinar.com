@@ -18,7 +18,7 @@
           />
 
           <q-toolbar-title>
-            IBO
+            CandidateWebinar
           </q-toolbar-title>
 
           <MSelectAppButton
