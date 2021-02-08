@@ -1,5 +1,5 @@
-import { MShowTutorialVideoButton } from '@ldiebold/quasar-ui-process-model-components/src'
+// import { MShowTutorialVideoButton } from '@ldiebold/quasar-ui-process-model-components/src'
 
-export default async ({ Vue }) => {
-  Vue.component('MShowTutorialVideoButton', MShowTutorialVideoButton)
-}
+// export default async ({ Vue }) => {
+//   Vue.component('MShowTutorialVideoButton', MShowTutorialVideoButton)
+// }
