@@ -7,7 +7,7 @@
       hide-create-button
       hide-update-button
       disable-header-menu
-      :visible-columns="['title', 'description', 'start_time', 'end_time']"
+      :visible-columns="['title', 'description', 'start_time', 'end_time', 'private_link']"
     >
       <template #top-right>
         <MShowTutorialVideoButton
