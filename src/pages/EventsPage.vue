@@ -2,12 +2,13 @@
   <q-page>
     <MOnlineEventsTable
       style="height: calc(100vh - 50px)"
-      :online-events="online_events"
-      hide-delete-button
-      hide-create-button
-      hide-update-button
-      disable-header-menu
-      :visible-columns="['title', 'description', 'start_time', 'end_time', 'private_link']"
+      :hide-delete-button="!$MUser.getSessionUser().isSuperAdmin"
+      :hide-create-button="!$MUser.getSessionUser().isSuperAdmin"
+      :hide-update-button="!$MUser.getSessionUser().isSuperAdmin"
+      :disable-header-menu="!$MUser.getSessionUser().isSuperAdmin"
+      :role="$MUser.getSessionUser().role"
+      :visible-columns="['title', 'description', 'start_time', 'end_time', 'recurrence', 'private_link']"
+      fetch
     >
       <template #top-right>
         <MShowTutorialVideoButton
@@ -28,13 +29,11 @@ export default {
   },
 
   created () {
-    this.$MOnlineEvent.$get()
+
   },
 
   computed: {
-    online_events () {
-      return this.$MOnlineEvent.all()
-    }
+
   }
 }
 </script>
